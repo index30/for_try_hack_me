@@ -1,0 +1,17 @@
+services:
+  kali:
+    build: .
+    image: kali-sandbox
+    volumes:
+      - kali-data:/home/kali
+      - ./tryhackme.ovpn:/home/kali/tryhackme.ovpn:rw
+    tty: true
+    stdin_open: true
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    ports:
+      - "5905:5901"
+volumes:
+  kali-data:
